@@ -15,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.tooling.preview.Preview
 
 import androidx.navigation.NavController
 import androidx.navigation.compose.*
@@ -107,7 +108,7 @@ fun HomeScreen(navController: NavController) {
         }
     }
 }
-
+@Preview
 @Composable
 fun LoginScreen() {
 
@@ -154,6 +155,116 @@ fun LoginScreen() {
             Text("Iniciar sesión")
         }
     }
+}
+
+@Preview
+@Composable
+fun SuperAdminScreen()
+{
+    Column(
+        Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(text = "Super Admin")
+        Spacer(modifier = Modifier.height(10.dp))
+
+        Button(onClick = {}) { Text("Ver eventos") }
+        Spacer(modifier = Modifier.height(10.dp))
+
+        Button(onClick = {}) { Text("Ver artistas") }
+        Spacer(modifier = Modifier.height(10.dp))
+
+        Button(onClick = {}) { Text("Centro Cultural") }
+        Spacer(modifier = Modifier.height(10.dp))
+
+        Button(onClick = {}) { Text("Galerías disponibles") }
+        Spacer(modifier = Modifier.height(10.dp))
+
+        Button(onClick = {}) { Text("Crear evento") }
+        Spacer(modifier = Modifier.height(10.dp))
+
+        Button(onClick = {}) { Text("Crear artista") }
+        Spacer(modifier = Modifier.height(10.dp))
+
+        Button(onClick = {}) { Text("Crear galería") }
+    }
+
+
+
+}
+@Preview
+@Composable
+fun ArtistScreen()
+{
+    Column(
+        Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(text = "Artista")
+        Spacer(modifier = Modifier.height(10.dp))
+
+        Button(onClick = {}) { Text("Ver eventos") }
+        Spacer(modifier = Modifier.height(10.dp))
+        Button(onClick = {}) { Text("Perfil") }
+        Spacer(modifier = Modifier.height(10.dp))
+
+        Button(onClick = {}) { Text("Mensajes") }
+        Spacer(modifier = Modifier.height(10.dp))
+        Button(onClick = {}) { Text("Portafolio Artistico") }
+        Spacer(modifier = Modifier.height(10.dp))
+
+
+
+
+
+
+
+    }
+
+
+
+}
+
+@Preview
+@Composable
+fun CentroCulturalScreen()
+{
+    Column(
+        Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(text = "Centro Cultural")
+        Spacer(modifier = Modifier.height(10.dp))
+
+        Button(onClick = {}) { Text("Ver eventos") }
+        Spacer(modifier = Modifier.height(10.dp))
+
+        Button(onClick = {}) { Text("Crear evento") }
+        Spacer(modifier = Modifier.height(10.dp))
+
+        Button(onClick = {}) { Text("Mensajes") }
+        Spacer(modifier = Modifier.height(10.dp))
+
+
+        Button(onClick = {}) { Text("Ver artistas") }
+        Spacer(modifier = Modifier.height(10.dp))
+
+
+        Button(onClick = {}) { Text("Buscar artistas") }
+        Spacer(modifier = Modifier.height(10.dp))
+
+        Button(onClick = {}) { Text("Crear galería") }
+        Spacer (modifier = Modifier.height(10.dp))
+
+        Button(onClick = {}) { Text("Ver Galerias") }
+
+    }
+
+
+
 }
 
 @Composable
