@@ -4,6 +4,7 @@ import androidx.compose.ui.tooling.preview.Devices
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -22,6 +23,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.ui.text.style.TextAlign
 import org.jetbrains.compose.resources.painterResource
 import laescena.composeapp.generated.resources.Res
+import androidx.compose.ui.text.font.FontWeight
 // Agrega esta línea con el nombre de tu imagen
 import laescena.composeapp.generated.resources.con1
 // Agrega esta línea con el nombre de tu imagen
@@ -316,95 +318,70 @@ fun EventosScreen() {
 }
 
 @Preview
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun GaleriaScreen() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(horizontal=38.dp)
-            .verticalScroll(rememberScrollState()), // Habilita el scroll vertical
-        verticalArrangement = Arrangement.Top, // Alinea al inicio para que el contenido fluya hacia abajo
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Spacer(modifier = Modifier.height(38.dp)) // Espacio superior
-        Text(text = "Galerias en existencia", style = MaterialTheme.typography.headlineLarge)
-        Spacer(modifier = Modifier.height(38.dp))
-        Text(text = "Souvenir", style = MaterialTheme.typography.headlineMedium)
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("Galerias disponibles") }
+
+            )
+        }) { paddingValues ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+                .padding(horizontal = 38.dp)
+                .verticalScroll(rememberScrollState()),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Spacer(modifier = Modifier.height(20.dp))
+
+            //Titulo de la galeria
+            Text(
+                text = "Souvenir",
+                style = MaterialTheme.typography.headlineMedium
+            )
+            Spacer(modifier = Modifier.height(16.dp))
 
 
-        //Imagenes
-        Text(text="Recuerdo borroso",
-            modifier = Modifier.fillMaxWidth(),
-            textAlign = TextAlign.Left,
-            style = MaterialTheme.typography.headlineMedium)
-        Spacer(modifier = Modifier.height(10.dp))
-        Image(
-            painter = painterResource(Res.drawable.IMG_3474),
-            contentDescription = "Recuerdo Borroso",
-            modifier = Modifier.size(300.dp) // Ajusta el tamaño según necesites
-        )
+            //Imagenes
 
-        Spacer(modifier = Modifier.height(38.dp))
+            @Composable
+            fun GaleriaPic(titulo: String, imagen: Painter){
+                Column {
+                    Text(
+                        text = titulo,
+                        style = MaterialTheme.typography.headlineSmall,
+                        fontWeight = FontWeight.Bold
+                    )
 
-        Text(text="Ya casi queda la comida",
-            modifier = Modifier.fillMaxWidth(),
-            style = MaterialTheme.typography.headlineMedium)
-        Spacer(modifier = Modifier.height(10.dp))
-        Image(
-            painter = painterResource(Res.drawable.IMG_4263),
-            contentDescription = "SEÑOR CON SOMBRERO",
-            modifier = Modifier.size(300.dp) )// Ajusta el tamaño según necesites
+                    Spacer(modifier = Modifier.height(8.dp))
 
-        Spacer(modifier = Modifier.height(38.dp)) // Espacio final
+                    Image(
+                        painter = imagen,
+                        contentDescription = titulo,
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                }
+            }
 
-        Text(text="m3m0r14z",
-            modifier = Modifier.fillMaxWidth(),
-            style = MaterialTheme.typography.headlineMedium)
-        Spacer(modifier = Modifier.height(10.dp))
-        Image(
-            painter = painterResource(Res.drawable.IMG_6064_edited),
-            contentDescription = "CHOLO",
-            modifier = Modifier.size(300.dp) )// Ajusta el tamaño según necesites
-        Spacer(modifier = Modifier.height(38.dp)) // Espacio final
+            GaleriaPic("Recuerdo borroso", painterResource(Res.drawable.IMG_3474))
+            Spacer(modifier = Modifier.height(8.dp))
+            GaleriaPic("Me entiende más un caballo", painterResource(Res.drawable.IMG_4263))
+            Spacer(modifier = Modifier.height(8.dp))
+            GaleriaPic("m3m0r14z", painterResource(Res.drawable.IMG_6064_edited))
+            Spacer(modifier = Modifier.height(38.dp))
+            GaleriaPic("tres viajes más y se  acaba", painterResource(Res.drawable.IMG_6194))
+            Spacer(modifier = Modifier.height(8.dp))
+            GaleriaPic("¿Con todo?", painterResource(Res.drawable.IMG_6625_edited))
+            Spacer(modifier = Modifier.height(8.dp))
+            GaleriaPic("¿Con chile del que pica?", painterResource(Res.drawable.IMG_6633))
+            Spacer(modifier = Modifier.height(8.dp))
+            GaleriaPic("50 X persona", painterResource(Res.drawable.IMG_6790))
+            Spacer(modifier = Modifier.height(8.dp))
 
-        Text(text="¿Cúanto falta pa' salir?",
-            modifier = Modifier.fillMaxWidth(),
-            style = MaterialTheme.typography.headlineMedium)
-        Spacer(modifier = Modifier.height(10.dp))
-        Image(
-            painter = painterResource(Res.drawable.IMG_6194),
-            contentDescription = "CHOFERES",
-            modifier = Modifier.size(300.dp) )// Ajusta el tamaño según necesites
-        Spacer(modifier = Modifier.height(38.dp)) // Espacio final
-
-        Text(text="¿Con todo?",
-            modifier = Modifier.fillMaxWidth(),
-            style = MaterialTheme.typography.headlineMedium)
-        Spacer(modifier = Modifier.height(10.dp))
-        Image(
-            painter = painterResource(Res.drawable.IMG_6625_edited),
-            contentDescription = "sin crema",
-            modifier = Modifier.size(300.dp) )// Ajusta el tamaño según necesites
-        Spacer(modifier = Modifier.height(38.dp)) // Espacio final
-
-        Text(text="¿Del que pica o del que no pica?",
-            modifier = Modifier.fillMaxWidth(),
-            style = MaterialTheme.typography.headlineMedium)
-        Spacer(modifier = Modifier.height(10.dp))
-        Image(
-            painter = painterResource(Res.drawable.IMG_6633),
-            contentDescription = "elotes",
-            modifier = Modifier.size(300.dp) )// Ajusta el tamaño según necesites
-        Spacer(modifier = Modifier.height(38.dp)) // Espacio final
-
-        Text(text="50 x persona",
-            modifier = Modifier.fillMaxWidth(),
-            style = MaterialTheme.typography.headlineMedium)
-        Spacer(modifier = Modifier.height(10.dp))
-        Image(
-            painter = painterResource(Res.drawable.IMG_6790),
-            contentDescription = "rueda",
-            modifier = Modifier.size(300.dp) )// Ajusta el tamaño según necesites
-        Spacer(modifier = Modifier.height(38.dp)) // Espacio final
+        }
     }
 }
